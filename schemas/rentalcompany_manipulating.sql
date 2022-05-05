@@ -13,7 +13,7 @@ JOIN job_position ON job_position.id_position = worker.position_idposition
 -- JOIN model ON model.id_model = vechicles.model_id_model;
 -- JOIN licence ON licence.id_licence = user.licence_id_licence
 -- JOIN user ON user.id_user = orders.user_id_user
--- JOIN ensurance ON ensurance.id_ensurance = orders.ensurance_id_ensurance
+-- JOIN insurance ON insurance.id_insurance = orders.insurance_id_insurance
 ;
 
 -- Join (inner and outer)
@@ -44,7 +44,7 @@ SELECT COUNT(u_name) FROM keith_denysiuk.user WHERE u_name LIKE 'K%';
 SELECT AVG(price_per_day) FROM keith_denysiuk.model WHERE id_model IN (1,3,5);
 SELECT MAX(pay_per_hour) FROM keith_denysiuk.job_position;
 SELECT MIN(pay_per_hour) FROM keith_denysiuk.job_position WHERE pay_per_hour LIKE (35);
-SELECT SUM(price) FROM keith_denysiuk.ensurance WHERE price IS NOT NULL;
+SELECT SUM(price) FROM keith_denysiuk.insurance WHERE price IS NOT NULL;
 SELECT expiration_date, COUNT(*) AS count FROM keith_denysiuk.licence GROUP BY expiration_date;
 SELECT m_name, price_per_day FROM keith_denysiuk.model GROUP BY m_name, price_per_day;
 
@@ -60,7 +60,7 @@ UPDATE user SET u_name = 'Martin Perez' WHERE id_user = 3;
 
 UPDATE licence SET num = '11111111' WHERE id_licence = 1;
 
-UPDATE ensurance SET e_name = 'La tercera', price = 199 WHERE id_ensurance = 2;
+UPDATE insurance SET i_name = 'La tercera', price = 199 WHERE id_insurance = 2;
 
 UPDATE location SET city = 'Santa Fe' WHERE id_location = 4;
 
@@ -82,7 +82,7 @@ DELETE FROM user WHERE id_user = 3;
 
 DELETE FROM licence WHERE num = '11111111';
 
-DELETE FROM ensurance WHERE price = 199;
+DELETE FROM insurance WHERE price = 199;
 
 DELETE FROM location WHERE city = 'Santa Fe';
 

@@ -14,10 +14,10 @@ VALUES ("Keith Denysiuk", "3735404649", "kmld1999@gmail.com", (SELECT id_licence
 ("Bruno Diaz", "3773508669", "kmld1999@gmail.com", (SELECT id_licence FROM licence WHERE num ="42222597")),
 ("Ana Roman", "3624674532", "kmld1999@gmail.com", (SELECT id_licence FROM licence WHERE num ="40176543"));
 
-INSERT INTO ensurance (e_name, price)
-VALUES ("Galeno", 150),
-("La Segunda", 200),
-("San Cristobal", 175);
+INSERT INTO insurance (i_name, price, insurance_type)
+VALUES ("Galeno", 150, "Cars"),
+("La Segunda", 200, "Full"),
+("San Cristobal", 175, "Cars and Driver");
 
 INSERT INTO location (city)
 VALUES ("Resistencia"),
@@ -32,12 +32,25 @@ VALUES ("Central Office", "1394 Sarmiento Avenue", (SELECT id_location FROM loca
 ("Rosario Branch Offiece B", "2378 Colon Street", (SELECT id_location FROM location WHERE city ="Rosario")),
 ("Parana Branch Offiece", "478 Mitre Street", (SELECT id_location FROM location WHERE city ="Parana"));
 
-INSERT INTO orders (user_id_user, ensurance_id_ensurance, building_id_building)
-VALUES (1, 1, 1),
+INSERT INTO job_position (name_of_position, pay_per_hour)
+VALUES ("Manager", 60),
+("Customer Assistant", 35);
+
+INSERT INTO work_shift (time_range)
+VALUES ("7:00-13:00"),
+("13:00-19:00");
+
+INSERT INTO worker (w_name, telephone, email, building_id_building, position_idposition, work_shift_id_work_shitf)
+VALUES ("Pedro Martinez", "3624547634", "pedrimarti@gmail.com", 1, 1, 1),
+("Maria Mercedez", "3624767689", "marimari@gmail.com", 1, 2, 1),
+("Elian Juarez", "3624676755", "juarezelian@gmail.com", 1, 2, 2);
+
+INSERT INTO orders (user_id_user, insurance_id_insurance, worker_id_worker)
+VALUES (1, 1, 3),
 (1, 1, 2),
 (2, 2, 3),
-(3, 2, 4),
-(4, 3, 1),
+(3, 2, 2),
+(4, 3, 3),
 (5, 1, 2);
 
 INSERT INTO category (vehicle_type)
@@ -64,19 +77,6 @@ VALUES (1, 1, "2022-05-10"),
 (2, 3, "2022-05-03"),
 (5, 4, "2022-05-05"),
 (4, 5, "2022-05-02");
-
-INSERT INTO job_position (name_of_position, pay_per_hour)
-VALUES ("Manager", 60),
-("Customer Assistant", 35);
-
-INSERT INTO work_shift (time_range)
-VALUES ("7:00-13:00"),
-("13:00-19:00");
-
-INSERT INTO worker (w_name, telephone, email, building_id_building, position_idposition, work_shift_id_work_shitf)
-VALUES ("Pedro Martinez", "3624547634", "pedrimarti@gmail.com", 1, 1, 1),
-("Maria Mercedez", "3624767689", "marimari@gmail.com", 1, 2, 1),
-("Elian Juarez", "3624676755", "juarezelian@gmail.com", 1, 2, 2);
 
 
 
