@@ -39,8 +39,7 @@ public class MySQLUserDAO implements DAO<User> {
     }
 
     public void update(User user, int[] params) {
-        user.setLicenseIdlicense(params[0]);
-        users.add(user);
+        //????
     }
 
     @Override

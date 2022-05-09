@@ -1,8 +1,11 @@
 package com.solvd.rentalcompany;
 
+import java.util.LinkedList;
+
 public class Category {
     private int idCategory;
     private String vehicleType;
+    private LinkedList<Model> models;
 
     public Category(int idCategory, String vehicleType) {
         this.idCategory = idCategory;

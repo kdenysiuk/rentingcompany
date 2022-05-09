@@ -3,12 +3,12 @@ package com.solvd.rentalcompany;
 public class Vehicles {
     private int idVechicles;
     private String licensePlate;
-    private int licenseIdLicense;
+    private License license;
 
-    public Vehicles(int idVechicles, String licensePlate, int licenseIdLicense) {
+    public Vehicles(int idVechicles, String licensePlate, License license) {
         this.idVechicles = idVechicles;
         this.licensePlate = licensePlate;
-        this.licenseIdLicense = licenseIdLicense;
+        this.license = license;
     }
 
     public int getIdVechicles() {
@@ -27,11 +27,11 @@ public class Vehicles {
         this.licensePlate = licensePlate;
     }
 
-    public int getLicenseIdLicense() {
-        return licenseIdLicense;
+    public License getLicense() {
+        return license;
     }
 
-    public void setLicenseIdLicense(int licenseIdLicense) {
-        this.licenseIdLicense = licenseIdLicense;
+    public void setLicense(License license) {
+        this.license = license;
     }
 }

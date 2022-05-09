@@ -5,14 +5,14 @@ public class User {
     private String uName;
     private String telephone;
     private String email;
-    private int licenseIdlicense;
+    private License license;
 
-    public User(int idUser, String uName, String telephone, String email, int licenseIdlicense) {
+    public User(int idUser, String uName, String telephone, String email, License licenseIdlicense) {
         this.idUser = idUser;
         this.uName = uName;
         this.telephone = telephone;
         this.email = email;
-        this.licenseIdlicense = licenseIdlicense;
+        this.license = licenseIdlicense;
     }
 
     public int getIdUser() {
@@ -47,11 +47,11 @@ public class User {
         this.email = email;
     }
 
-    public int getLicenseIdlicense() {
-        return licenseIdlicense;
+    public License getLicense() {
+        return license;
     }
 
-    public void setLicenseIdlicense(int licenseIdlicense) {
-        this.licenseIdlicense = licenseIdlicense;
+    public void setLicense(License license) {
+        this.license = license;
     }
 }

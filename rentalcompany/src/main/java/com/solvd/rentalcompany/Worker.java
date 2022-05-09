@@ -5,18 +5,18 @@ public class Worker {
     private String wName;
     private String telephone;
     private String email;
-    private int buildingIdBuilding;
-    private int positionIdPosition;
-    private int workShiftIdWorkShift;
+    private Building building;
+    private JobPosition jobPosition;
+    private WorkShift workShift;
 
-    public Worker(int idWorker, String wName, String telephone, String email, int buildingIdBuilding, int positionIdPosition, int workShiftIdWorkShift) {
+    public Worker(int idWorker, String wName, String telephone, String email, Building building, JobPosition jobPosition, WorkShift workShift) {
         this.idWorker = idWorker;
         this.wName = wName;
         this.telephone = telephone;
         this.email = email;
-        this.buildingIdBuilding = buildingIdBuilding;
-        this.positionIdPosition = positionIdPosition;
-        this.workShiftIdWorkShift = workShiftIdWorkShift;
+        this.building = building;
+        this.jobPosition = jobPosition;
+        this.workShift = workShift;
     }
 
     public int getIdWorker() {
@@ -51,27 +51,27 @@ public class Worker {
         this.email = email;
     }
 
-    public int getBuildingIdBuilding() {
-        return buildingIdBuilding;
+    public Building getBuilding() {
+        return building;
     }
 
-    public void setBuildingIdBuilding(int buildingIdBuilding) {
-        this.buildingIdBuilding = buildingIdBuilding;
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 
-    public int getPositionIdPosition() {
-        return positionIdPosition;
+    public JobPosition getJobPosition() {
+        return jobPosition;
     }
 
-    public void setPositionIdPosition(int positionIdPosition) {
-        this.positionIdPosition = positionIdPosition;
+    public void setJobPosition(JobPosition jobPosition) {
+        this.jobPosition = jobPosition;
     }
 
-    public int getWorkShiftIdWorkShift() {
-        return workShiftIdWorkShift;
+    public WorkShift getWorkShift() {
+        return workShift;
     }
 
-    public void setWorkShiftIdWorkShift(int workShiftIdWorkShift) {
-        this.workShiftIdWorkShift = workShiftIdWorkShift;
+    public void setWorkShift(WorkShift workShift) {
+        this.workShift = workShift;
     }
 }

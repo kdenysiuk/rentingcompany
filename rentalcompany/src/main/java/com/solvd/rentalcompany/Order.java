@@ -1,16 +1,26 @@
 package com.solvd.rentalcompany;
 
+import java.util.ArrayList;
+
 public class Order {
     private int idOrder;
-    private int userIdUser;
-    private int insuranceIdInsurance;
-    private int workerIdWorker;
+    private User user;
+    private Insurance insurance;
+    private Worker worker;
+    private ArrayList<Vehicles> vehicles;
+    public ArrayList<Vehicles> getVehicles() {
+        return vehicles;
+    }
 
-    public Order(int idOrder, int userIdUser, int insuranceIdInsurance, int workerIdWorker) {
+    public void setVehicles(ArrayList<Vehicles> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public Order(int idOrder, User user, Insurance insurance, Worker worker) {
         this.idOrder = idOrder;
-        this.userIdUser = userIdUser;
-        this.insuranceIdInsurance = insuranceIdInsurance;
-        this.workerIdWorker = workerIdWorker;
+        this.user = user;
+        this.insurance = insurance;
+        this.worker = worker;
     }
 
     public int getIdOrder() {
@@ -21,27 +31,27 @@ public class Order {
         this.idOrder = idOrder;
     }
 
-    public int getUserIdUser() {
-        return userIdUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserIdUser(int userIdUser) {
-        this.userIdUser = userIdUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getInsuranceIdInsurance() {
-        return insuranceIdInsurance;
+    public Insurance getInsurance() {
+        return insurance;
     }
 
-    public void setInsuranceIdInsurance(int insuranceIdInsurance) {
-        this.insuranceIdInsurance = insuranceIdInsurance;
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
     }
 
-    public int getWorkerIdWorker() {
-        return workerIdWorker;
+    public Worker getWorker() {
+        return worker;
     }
 
-    public void setWorkerIdWorker(int workerIdWorker) {
-        this.workerIdWorker = workerIdWorker;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 }

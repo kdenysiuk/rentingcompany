@@ -1,16 +1,19 @@
 package com.solvd.rentalcompany;
 
+import java.util.ArrayList;
+
 public class Building {
     private int idBuilding;
     private String bName;
     private String address;
-    private int locationIdLocation;
+    private Location location;
+    private ArrayList<Worker> workers;
 
-    public Building(int idBuilding, String bName, String address, int locationIdLocation) {
+    public Building(int idBuilding, String bName, String address, Location location) {
         this.idBuilding = idBuilding;
         this.bName = bName;
         this.address = address;
-        this.locationIdLocation = locationIdLocation;
+        this.location = location;
     }
 
     public int getIdBuilding() {
@@ -37,11 +40,11 @@ public class Building {
         this.address = address;
     }
 
-    public int getLocationIdLocation() {
-        return locationIdLocation;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setLocationIdLocation(int locationIdLocation) {
-        this.locationIdLocation = locationIdLocation;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

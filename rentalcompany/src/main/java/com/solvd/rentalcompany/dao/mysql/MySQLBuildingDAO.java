@@ -5,7 +5,6 @@ import com.solvd.rentalcompany.dao.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class MySQLBuildingDAO implements DAO<Building>{
@@ -32,17 +31,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
 
     @Override
     public void update(Building building, String[] params) {
-        building.setbName(Objects.requireNonNull(params[0], "Name can not be null."));
-        building.setAddress(Objects.requireNonNull(params[1], "Address can not be null"));
-        buildings.add(building);
-
-    }
-
-    public void update(Building building, int[] params) {
-        building.setIdBuilding(params[0]);
-        building.setLocationIdLocation(params[1]);
-        buildings.add(building);
-
+        // ?????????
     }
 
     @Override

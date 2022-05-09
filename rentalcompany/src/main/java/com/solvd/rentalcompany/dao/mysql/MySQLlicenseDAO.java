@@ -37,8 +37,7 @@ public class MySQLlicenseDAO implements DAO<License> {
     }
 
     public void update(License license, int[] params) {
-        license.setExpirationDate(params[0]);
-        licenses.add(license);
+        //????
     }
 
     @Override

@@ -1,8 +1,11 @@
 package com.solvd.rentalcompany;
 
+import java.util.LinkedList;
+
 public class Location {
     private int idLocation;
     private String city;
+    private LinkedList<Building> buildings;
 
     public Location(int idLocation, String city) {
         this.idLocation = idLocation;

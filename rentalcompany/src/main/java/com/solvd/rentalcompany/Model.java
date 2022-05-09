@@ -1,16 +1,19 @@
 package com.solvd.rentalcompany;
 
+import java.util.LinkedList;
+
 public class Model {
     private int idModel;
     private String mName;
     private int pricePerDay;
-    private int categoryIdCategory;
+    private Category category;
+    private LinkedList<Vehicles> vehicles;
 
-    public Model(int idModel, String mName, int pricePerDay, int categoryIdCategory) {
+    public Model(int idModel, String mName, int pricePerDay, Category category) {
         this.idModel = idModel;
         this.mName = mName;
         this.pricePerDay = pricePerDay;
-        this.categoryIdCategory = categoryIdCategory;
+        this.category = category;
     }
 
     public int getIdModel() {
@@ -37,11 +40,11 @@ public class Model {
         this.pricePerDay = pricePerDay;
     }
 
-    public int getCategoryIdCategory() {
-        return categoryIdCategory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryIdCategory(int categoryIdCategory) {
-        this.categoryIdCategory = categoryIdCategory;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
