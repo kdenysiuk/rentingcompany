@@ -1,4 +1,4 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 import java.util.LinkedList;
 

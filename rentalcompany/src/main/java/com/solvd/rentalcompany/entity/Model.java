@@ -1,4 +1,4 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 import java.util.LinkedList;
 
@@ -7,13 +7,17 @@ public class Model {
     private String mName;
     private int pricePerDay;
     private Category category;
-    private LinkedList<Vehicles> vehicles;
+    private LinkedList<Vehicle> vehicles;
 
     public Model(int idModel, String mName, int pricePerDay, Category category) {
         this.idModel = idModel;
         this.mName = mName;
         this.pricePerDay = pricePerDay;
         this.category = category;
+    }
+
+    public Model() {
+
     }
 
     public int getIdModel() {

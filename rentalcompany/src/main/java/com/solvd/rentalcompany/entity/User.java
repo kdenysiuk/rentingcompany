@@ -1,4 +1,4 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 public class User {
     private int idUser;
@@ -13,6 +13,10 @@ public class User {
         this.telephone = telephone;
         this.email = email;
         this.license = licenseIdlicense;
+    }
+
+    public User() {
+
     }
 
     public int getIdUser() {

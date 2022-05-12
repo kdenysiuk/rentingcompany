@@ -1,4 +1,4 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 public class WorkShift {
     private int idWorkShift;

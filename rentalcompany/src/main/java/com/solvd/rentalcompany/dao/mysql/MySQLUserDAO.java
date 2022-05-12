@@ -1,49 +1,125 @@
 package com.solvd.rentalcompany.dao.mysql;
 
-import com.solvd.rentalcompany.User;
+import com.solvd.rentalcompany.dao.connectionn.Connectionn;
+import com.solvd.rentalcompany.entity.License;
+import com.solvd.rentalcompany.entity.User;
 import com.solvd.rentalcompany.dao.DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 public class MySQLUserDAO implements DAO<User> {
-    private List<User> users = new ArrayList<>();
-
-    public MySQLUserDAO() {
-        //insert users
-    }
 
     @Override
-    public Optional<User> get(long id) {
-        return Optional.ofNullable(users.get((int) id));
+    public User get(long id) {
+        String query = "SELECT * FROM user WHERE id_user = ?";
+        License license = new License();
+
+        try {
+            Connection connection = Connectionn.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //user data
+            int idUser = resultSet.getInt("id_user");
+            String uName = resultSet.getString("u_name");
+            String telephone = resultSet.getString("telephone");
+            String email = resultSet.getString("email");
+
+            //license data
+            license.setIdLicense(resultSet.getInt("licence_id_licence"));
+
+            return new User(idUser, uName , telephone , email , license);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public List<User> getAll() {
-        return users;
+        String query = "SELECT * FROM user";
+        List<User> users = new ArrayList<>();
+        User user;
+        License license = new License();
+
+        try {
+            Connection connection = Connectionn.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                //user data
+                int idUser = resultSet.getInt("id_user");
+                String uName = resultSet.getString("u_name");
+                String telephone = resultSet.getString("telephone");
+                String email = resultSet.getString("email");
+
+                //license data
+                license.setIdLicense(resultSet.getInt("licence_id_licence"));
+
+                user = new User(idUser, uName, telephone, email, license);
+                users.add(user);
+            }
+            return users;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void save(User user) {
-        users.add(user);
+    public void insert(User user) {
+        String query = "INSERT into users (u_name, telephone, email, licence_id_licence) VALUES (?, ?, ?, ?)";
+
+        try {
+            Connection connection = Connectionn.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, user.getuName());
+            preparedStatement.setString(2, user.getTelephone());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setInt(4, user.getLicense().getIdLicense());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public void update(User user, String[] params) {
-        user.setuName(Objects.requireNonNull(params[0], "Name cannot be null"));
-        user.setTelephone(Objects.requireNonNull(params[1], "Telephone cannot be null"));
-        user.setEmail(Objects.requireNonNull(params[2], "Email cannot be null"));
-        users.add(user);
-    }
+    public void update(User user, int id) {
+        String query = "UPDATE user SET u_name = ?, telephone = ?, email = ?, licence_id_licence = ? WHERE id_user = ?";
 
-    public void update(User user, int[] params) {
-        //????
+        try {
+            Connection connection = Connectionn.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(5, id);
+
+            preparedStatement.setString(1, user.getuName());
+            preparedStatement.setString(2, user.getTelephone());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setInt(4, user.getLicense().getIdLicense());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void delete(User user) {
-        users.remove(user);
+        String query = "DELETE From user WHERE id = ?";
+
+        try {
+            Connection connection = Connectionn.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, user.getIdUser());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

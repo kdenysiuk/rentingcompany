@@ -1,4 +1,4 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 public class Worker {
     private int idWorker;
@@ -17,6 +17,10 @@ public class Worker {
         this.building = building;
         this.jobPosition = jobPosition;
         this.workShift = workShift;
+    }
+
+    public Worker() {
+
     }
 
     public int getIdWorker() {

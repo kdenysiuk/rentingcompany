@@ -1,14 +1,18 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 public class License {
     private int idLicense;
     private String num;
-    private int expirationDate;
+    private String expirationDate;
 
-    public License(int idLicense, String num, int expirationDate) {
+    public License(int idLicense, String num, String expirationDate) {
         this.idLicense = idLicense;
         this.num = num;
         this.expirationDate = expirationDate;
+    }
+
+    public License() {
+
     }
 
     public void setIdLicense(int idLicense) {
@@ -19,7 +23,7 @@ public class License {
         this.num = num;
     }
 
-    public void setExpirationDate(int expirationDate) {
+    public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
 
@@ -31,7 +35,7 @@ public class License {
         return num;
     }
 
-    public int getExpirationDate() {
+    public String getExpirationDate() {
         return expirationDate;
     }
 }

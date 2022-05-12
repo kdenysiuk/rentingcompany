@@ -1,24 +1,28 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 public class Insurance {
-    private int idUser;
+    private int idInsurance;
     private String iName;
     private int price;
     private String insuranceType;
 
     public Insurance(int idUser, String iName, int price, String insuranceType) {
-        this.idUser = idUser;
+        this.idInsurance = idUser;
         this.iName = iName;
         this.price = price;
         this.insuranceType = insuranceType;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public Insurance() {
+
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public int getIdInsurance() {
+        return idInsurance;
+    }
+
+    public void setIdInsurance(int idInsurance) {
+        this.idInsurance = idInsurance;
     }
 
     public String getiName() {

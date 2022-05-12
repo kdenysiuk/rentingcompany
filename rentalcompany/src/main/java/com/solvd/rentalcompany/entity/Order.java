@@ -1,23 +1,29 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.entity;
 
 import java.util.ArrayList;
 
 public class Order {
     private int idOrder;
+    private String orderDate;
     private User user;
     private Insurance insurance;
     private Worker worker;
-    private ArrayList<Vehicles> vehicles;
-    public ArrayList<Vehicles> getVehicles() {
+    private ArrayList<Vehicle> vehicles;
+
+    public Order() {
+    }
+
+    public ArrayList<Vehicle> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(ArrayList<Vehicles> vehicles) {
+    public void setVehicles(ArrayList<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
 
-    public Order(int idOrder, User user, Insurance insurance, Worker worker) {
+    public Order(int idOrder, String orderDate, User user, Insurance insurance, Worker worker) {
         this.idOrder = idOrder;
+        this.orderDate = orderDate;
         this.user = user;
         this.insurance = insurance;
         this.worker = worker;
@@ -53,5 +59,13 @@ public class Order {
 
     public void setWorker(Worker worker) {
         this.worker = worker;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 }

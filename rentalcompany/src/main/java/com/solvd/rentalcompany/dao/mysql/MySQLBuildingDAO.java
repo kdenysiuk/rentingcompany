@@ -1,6 +1,6 @@
 package com.solvd.rentalcompany.dao.mysql;
 
-import com.solvd.rentalcompany.Building;
+import com.solvd.rentalcompany.entity.Building;
 import com.solvd.rentalcompany.dao.DAO;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
     }
 
     @Override
-    public Optional<Building> get(long id) {
+    public Building get(long id) {
         return Optional.ofNullable(buildings.get((int) id));
     }
 
@@ -25,12 +25,12 @@ public class MySQLBuildingDAO implements DAO<Building>{
     }
 
     @Override
-    public void save(Building building) {
+    public void insert(Building building) {
         buildings.add(building);
     }
 
     @Override
-    public void update(Building building, String[] params) {
+    public void update(Building building, int id) {
         // ?????????
     }
 
