@@ -45,13 +45,13 @@ VALUES ("Pedro Martinez", "3624547634", "pedrimarti@gmail.com", 1, 1, 1),
 ("Maria Mercedez", "3624767689", "marimari@gmail.com", 1, 2, 1),
 ("Elian Juarez", "3624676755", "juarezelian@gmail.com", 1, 2, 2);
 
-INSERT INTO orders (user_id_user, insurance_id_insurance, worker_id_worker)
-VALUES (1, 1, 3),
-(1, 1, 2),
-(2, 2, 3),
-(3, 2, 2),
-(4, 3, 3),
-(5, 1, 2);
+INSERT INTO orders (user_id_user, order_date, insurance_id_insurance, worker_id_worker)
+VALUES (1, "05-15-2022 to 06-15-2022", 1, 3),
+(1, "05-15-2022 to 06-15-2022", 1, 2),
+(2, "04-20-2022 to 05-01-2022", 2, 3),
+(3, "06-10-2022 to 06-25-2022", 2, 2),
+(4, "05-31-2022 to 07-12-2022", 3, 3),
+(5, "05-17-2022 to 06-05-2022", 1, 2);
 
 INSERT INTO category (vehicle_type)
 VALUES ("Car"),

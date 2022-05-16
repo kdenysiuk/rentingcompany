@@ -67,8 +67,8 @@ CREATE TABLE IF NOT EXISTS `keith_denysiuk`.`worker` (
   
   CREATE TABLE IF NOT EXISTS `keith_denysiuk`.`orders` (
   `id_order` INT NOT NULL AUTO_INCREMENT,
-  `user_id_user` INT NOT NULL,
   `order_date` VARCHAR(45) NOT NULL,
+  `user_id_user` INT NOT NULL,
   `insurance_id_insurance` INT NOT NULL,
   `worker_id_worker` INT NOT NULL,
   PRIMARY KEY (`id_order`),

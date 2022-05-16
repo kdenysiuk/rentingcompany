@@ -12,6 +12,10 @@ public class Location {
         this.city = city;
     }
 
+    public Location() {
+        
+    }
+
     public int getIdLocation() {
         return idLocation;
     }

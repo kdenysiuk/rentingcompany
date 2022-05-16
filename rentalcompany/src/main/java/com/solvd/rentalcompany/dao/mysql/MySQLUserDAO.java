@@ -34,7 +34,7 @@ public class MySQLUserDAO implements DAO<User> {
             //license data
             license.setIdLicense(resultSet.getInt("licence_id_licence"));
 
-            return new User(idUser, uName , telephone , email , license);
+            return new User(uName , telephone , email , license);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -63,7 +63,7 @@ public class MySQLUserDAO implements DAO<User> {
                 //license data
                 license.setIdLicense(resultSet.getInt("licence_id_licence"));
 
-                user = new User(idUser, uName, telephone, email, license);
+                user = new User(uName, telephone, email, license);
                 users.add(user);
             }
             return users;
@@ -74,7 +74,7 @@ public class MySQLUserDAO implements DAO<User> {
 
     @Override
     public void insert(User user) {
-        String query = "INSERT into users (u_name, telephone, email, licence_id_licence) VALUES (?, ?, ?, ?)";
+        String query = "INSERT into user (u_name, telephone, email, licence_id_licence) VALUES (?, ?, ?, ?)";
 
         try {
             Connection connection = Connectionn.getConnection();

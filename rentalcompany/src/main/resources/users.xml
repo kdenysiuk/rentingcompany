@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user user_id = "10">
+        <u_name>Juan Lopez</u_name>
+        <telephone>3624567483</telephone>
+        <email>juanlopez@gmail.com</email>
+        <license license_id = "10">
+            <num>24786547</num>
+            <expiration_date>2025</expiration_date>
+        </license>
+    </user>
+    <user user_id = "11">
+        <u_name>Lucas Lopez</u_name>
+        <telephone>3624445583</telephone>
+        <email>lucaslopez@gmail.com</email>
+        <license license_id = "11">
+            <num>32456745</num>
+            <expiration_date>2025</expiration_date>
+        </license>
+    </user>
+    <user user_id = "12">
+        <u_name>Mario Hernandez</u_name>
+        <telephone>3624223313</telephone>
+        <email>mariohernandez@gmail.com</email>
+        <license license_id = "12">
+            <num>40322655</num>
+            <expiration_date>2024</expiration_date>
+        </license>
+    </user>
+</users>

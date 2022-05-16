@@ -1,20 +1,32 @@
 package com.solvd.rentalcompany.dao.service;
 
+import com.solvd.rentalcompany.dao.mysql.MySQLOrderDAO;
 import com.solvd.rentalcompany.entity.Order;
-import com.solvd.rentalcompany.dao.mysql.MySQLUserDAO;
-import com.solvd.rentalcompany.dao.mysql.MySQLVehicleDAO;
 
-import java.util.LinkedList;
+import java.util.List;
 
 public class OrderService {
-    public LinkedList<Order> getAllOrders() {
+    private final MySQLOrderDAO mySQLOrderDAO = new MySQLOrderDAO();
 
+    public Order getOrderById(int id) {
+        return this.mySQLOrderDAO.get(id);
     }
 
-    public void createOrder(Order order) {
-        new MySQLUserDAO().insert(order.getUser());
-        order.getVehicles().forEach(x -> new MySQLVehicleDAO().insert(x));
-        // new MySQLOrderDAO().save(order);
+    public List<Order> getAllOrder() {
+        return this.mySQLOrderDAO.getAll();
+    }
+
+    public void registerOrder(Order order) {
+
+        this.mySQLOrderDAO.insert(order);
+    }
+
+    public void updateGroupById(Order order, int id) {
+        this.mySQLOrderDAO.update(order, id);
+    }
+
+    public void deleteGroup(Order order) {
+        this.mySQLOrderDAO.delete(order);
     }
 }
 

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLlicenseDAO implements DAO<License> {
+public class MySQLicenseDAO implements DAO<License> {
 
     @Override
     public License get(long id) {
@@ -25,9 +25,9 @@ public class MySQLlicenseDAO implements DAO<License> {
 
             int idLicense = resultSet.getInt("id_licence");
             String num = resultSet.getString("num");
-            String expirationDate = resultSet.getString("expiration_date");
+            int expirationDate = resultSet.getInt("expiration_date");
 
-            return new License(idLicense, num, expirationDate);
+            return new License(num, expirationDate);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -47,8 +47,8 @@ public class MySQLlicenseDAO implements DAO<License> {
             while(resultSet.next()) {
                 int idLicense = resultSet.getInt("id_licence");
                 String num = resultSet.getString("num");
-                String expirationDate = resultSet.getString("expiration_date");
-                license = new License(idLicense, num, expirationDate);
+                int expirationDate = resultSet.getInt("expiration_date");
+                license = new License(num, expirationDate);
                 licenses.add(license);
             }
             return licenses;
@@ -66,7 +66,7 @@ public class MySQLlicenseDAO implements DAO<License> {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, license.getNum());
-            preparedStatement.setString(2, license.getExpirationDate());
+            preparedStatement.setInt(2, license.getExpirationDate());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -83,7 +83,7 @@ public class MySQLlicenseDAO implements DAO<License> {
             preparedStatement.setLong(3, id);
 
             preparedStatement.setString(1, license.getNum());
-            preparedStatement.setString(2, license.getExpirationDate());
+            preparedStatement.setInt(2, license.getExpirationDate());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -100,7 +100,7 @@ public class MySQLlicenseDAO implements DAO<License> {
             preparedStatement.setLong(3, license.getIdLicense());
 
             preparedStatement.setString(1, license.getNum());
-            preparedStatement.setString(2, license.getExpirationDate());
+            preparedStatement.setInt(2, license.getExpirationDate());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

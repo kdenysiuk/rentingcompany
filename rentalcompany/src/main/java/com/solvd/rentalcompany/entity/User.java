@@ -7,8 +7,7 @@ public class User {
     private String email;
     private License license;
 
-    public User(int idUser, String uName, String telephone, String email, License licenseIdlicense) {
-        this.idUser = idUser;
+    public User(String uName, String telephone, String email, License licenseIdlicense) {
         this.uName = uName;
         this.telephone = telephone;
         this.email = email;
