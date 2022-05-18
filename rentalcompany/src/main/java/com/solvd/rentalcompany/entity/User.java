@@ -1,5 +1,11 @@
 package com.solvd.rentalcompany.entity;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+
+@XmlType(propOrder = {"idUser", "uName", "telephone", "email", "license"})
 public class User {
     private int idUser;
     private String uName;
@@ -21,7 +27,7 @@ public class User {
     public int getIdUser() {
         return idUser;
     }
-
+    @XmlAttribute
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
@@ -29,7 +35,7 @@ public class User {
     public String getuName() {
         return uName;
     }
-
+    @XmlElement(name = "uName")
     public void setuName(String uName) {
         this.uName = uName;
     }
@@ -37,7 +43,7 @@ public class User {
     public String getTelephone() {
         return telephone;
     }
-
+    @XmlElement(name = "telephone")
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
@@ -45,7 +51,7 @@ public class User {
     public String getEmail() {
         return email;
     }
-
+    @XmlElement(name = "email")
     public void setEmail(String email) {
         this.email = email;
     }
@@ -53,7 +59,7 @@ public class User {
     public License getLicense() {
         return license;
     }
-
+    @XmlElement(name = "license")
     public void setLicense(License license) {
         this.license = license;
     }

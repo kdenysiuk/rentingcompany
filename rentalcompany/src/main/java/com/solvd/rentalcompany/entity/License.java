@@ -1,5 +1,10 @@
 package com.solvd.rentalcompany.entity;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlType;
+
+@XmlType(propOrder = {"idLicense", "num", "expirationDate"})
 public class License {
     private int idLicense;
     private String num;
@@ -13,15 +18,15 @@ public class License {
     public License() {
 
     }
-
+    @XmlAttribute
     public void setIdLicense(int idLicense) {
         this.idLicense = idLicense;
     }
-
+    @XmlElement
     public void setNum(String num) {
         this.num = num;
     }
-
+    @XmlElement
     public void setExpirationDate(int expirationDate) {
         this.expirationDate = expirationDate;
     }
