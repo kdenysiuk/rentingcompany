@@ -5,6 +5,7 @@ import com.solvd.rentalcompany.dao.mysql.MySQLicenseDAO;
 import com.solvd.rentalcompany.entity.License;
 import com.solvd.rentalcompany.entity.User;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
@@ -16,7 +17,12 @@ public class UserService {
     }
 
     public List<User> getAllUser() {
-        return this.mySQLUserDAO.getAll();
+        List<User> users;
+        users = mySQLUserDAO.getAll();
+        for (User user : users) {
+            setForeignObject(user);
+            }
+        return users;
     }
 
     public void registerUser(User user, License license) {
@@ -32,5 +38,14 @@ public class UserService {
     public void deleteUser(User user) {
         this.mySQLUserDAO.delete(user);
         this.mySQLicenseDAO.delete(user.getLicense());
+    }
+
+    public void setForeignObject(User user) {
+        try {
+            License license = mySQLicenseDAO.getFromUser(user.getIdUser());
+            user.setLicense(license);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

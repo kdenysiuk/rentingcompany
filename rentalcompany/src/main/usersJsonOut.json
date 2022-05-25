@@ -1,0 +1,21 @@
+[ {
+  "idUser" : 61,
+  "uName" : "Sergey",
+  "telephone" : "1189763465",
+  "email" : "sergey@gmail.com",
+  "license" : {
+    "idLicense" : 61,
+    "num" : "34755644",
+    "expirationDate" : 2025
+  }
+}, {
+  "idUser" : 62,
+  "uName" : "Miguel",
+  "telephone" : "3624895674",
+  "email" : "miguel@gmail.com",
+  "license" : {
+    "idLicense" : 62,
+    "num" : "24557242",
+    "expirationDate" : 2024
+  }
+} ]

@@ -1,0 +1,11 @@
+{
+  "idUser":71,
+  "uName":"Keith Denysiuk",
+  "telephone":"3735404649",
+  "email":"kdenysiuk@solvd.com",
+  "license":{
+    "idLicense":71,
+    "num":"42189423",
+    "expirationDate":2024
+  }
+}

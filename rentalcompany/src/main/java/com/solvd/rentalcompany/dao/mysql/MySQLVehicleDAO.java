@@ -87,7 +87,7 @@ public class MySQLVehicleDAO implements DAO<Vehicle> {
     }
 
     @Override
-    public void update(Vehicle vehicle, int id) {
+    public void update(Vehicle vehicle, long id) {
         String query = "UPDATE orders SET license_plate = ?, model_id_model = ? WHERE id_vehicle = ?";
 
         try {

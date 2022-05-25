@@ -89,7 +89,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
     }
 
     @Override
-    public void update(Building building, int id) {
+    public void update(Building building, long id) {
         String query = "UPDATE building SET b_name = ?, address = ?, location_id_location = ? WHERE id_user = ?";
 
         try {

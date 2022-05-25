@@ -95,8 +95,8 @@ public class MySQLOrderDAO implements DAO<Order> {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
 
             preparedStatement.setString(1, order.getOrderDate());
-            preparedStatement.setInt(2, order.getUser().getIdUser());
-            preparedStatement.setInt(3, order.getInsurance().getIdInsurance());
+            preparedStatement.setLong(2, order.getUser().getIdUser());
+            preparedStatement.setLong(3, order.getInsurance().getIdInsurance());
             preparedStatement.setInt(4, order.getWorker().getIdWorker());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -105,7 +105,7 @@ public class MySQLOrderDAO implements DAO<Order> {
     }
 
     @Override
-    public void update(Order order, int id) {
+    public void update(Order order, long id) {
         String query = "UPDATE orders SET order_date = ?, user_id_user = ?, insurance_id_insurance = ?, worker_id_worker = ? WHERE id_order = ?";
 
         try {
@@ -114,8 +114,8 @@ public class MySQLOrderDAO implements DAO<Order> {
             preparedStatement.setLong(5, id);
 
             preparedStatement.setString(1, order.getOrderDate());
-            preparedStatement.setInt(2, order.getUser().getIdUser());
-            preparedStatement.setInt(3, order.getInsurance().getIdInsurance());
+            preparedStatement.setLong(2, order.getUser().getIdUser());
+            preparedStatement.setLong(3, order.getInsurance().getIdInsurance());
             preparedStatement.setInt(4, order.getWorker().getIdWorker());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

@@ -6,7 +6,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = {"idLicense", "num", "expirationDate"})
 public class License {
-    private int idLicense;
+    private long idLicense;
     private String num;
     private int expirationDate;
 
@@ -18,8 +18,15 @@ public class License {
     public License() {
 
     }
+
+    public License(long idLicense, String num, int expirationDate) {
+        this.idLicense = idLicense;
+        this.num = num;
+        this.expirationDate = expirationDate;
+    }
+
     @XmlAttribute
-    public void setIdLicense(int idLicense) {
+    public void setIdLicense(long idLicense) {
         this.idLicense = idLicense;
     }
     @XmlElement
@@ -31,7 +38,7 @@ public class License {
         this.expirationDate = expirationDate;
     }
 
-    public int getIdLicense() {
+    public long getIdLicense() {
         return idLicense;
     }
 
@@ -41,5 +48,13 @@ public class License {
 
     public int getExpirationDate() {
         return expirationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "License{" +
+                "num='" + num + '\'' +
+                ", expirationDate=" + expirationDate +
+                '}';
     }
 }

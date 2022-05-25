@@ -24,9 +24,10 @@ public class MySQLUserDAO implements DAO<User> {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
 
             //user data
-            int idUser = resultSet.getInt("id_user");
+            long idUser = resultSet.getLong("id_user");
             String uName = resultSet.getString("u_name");
             String telephone = resultSet.getString("telephone");
             String email = resultSet.getString("email");
@@ -34,7 +35,7 @@ public class MySQLUserDAO implements DAO<User> {
             //license data
             license.setIdLicense(resultSet.getInt("licence_id_licence"));
 
-            return new User(uName , telephone , email , license);
+            return new User(idUser, uName , telephone , email , license);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -55,7 +56,7 @@ public class MySQLUserDAO implements DAO<User> {
 
             while(resultSet.next()) {
                 //user data
-                int idUser = resultSet.getInt("id_user");
+                long idUser = resultSet.getLong("id_user");
                 String uName = resultSet.getString("u_name");
                 String telephone = resultSet.getString("telephone");
                 String email = resultSet.getString("email");
@@ -63,7 +64,7 @@ public class MySQLUserDAO implements DAO<User> {
                 //license data
                 license.setIdLicense(resultSet.getInt("licence_id_licence"));
 
-                user = new User(uName, telephone, email, license);
+                user = new User(idUser, uName, telephone, email, license);
                 users.add(user);
             }
             return users;
@@ -83,7 +84,7 @@ public class MySQLUserDAO implements DAO<User> {
             preparedStatement.setString(1, user.getuName());
             preparedStatement.setString(2, user.getTelephone());
             preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setInt(4, user.getLicense().getIdLicense());
+            preparedStatement.setLong(4, user.getLicense().getIdLicense());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -91,7 +92,7 @@ public class MySQLUserDAO implements DAO<User> {
     }
 
     @Override
-    public void update(User user, int id) {
+    public void update(User user, long id) {
         String query = "UPDATE user SET u_name = ?, telephone = ?, email = ?, licence_id_licence = ? WHERE id_user = ?";
 
         try {
@@ -102,7 +103,7 @@ public class MySQLUserDAO implements DAO<User> {
             preparedStatement.setString(1, user.getuName());
             preparedStatement.setString(2, user.getTelephone());
             preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setInt(4, user.getLicense().getIdLicense());
+            preparedStatement.setLong(4, user.getLicense().getIdLicense());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -111,12 +112,12 @@ public class MySQLUserDAO implements DAO<User> {
 
     @Override
     public void delete(User user) {
-        String query = "DELETE From user WHERE id = ?";
+        String query = "DELETE From user WHERE id_user = ?";
 
         try {
             Connection connection = Connectionn.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, user.getIdUser());
+            preparedStatement.setLong(1, user.getIdUser());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

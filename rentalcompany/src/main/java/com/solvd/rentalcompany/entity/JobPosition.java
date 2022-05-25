@@ -3,22 +3,29 @@ package com.solvd.rentalcompany.entity;
 import java.util.LinkedList;
 
 public class JobPosition {
-    private int idPosition;
+    private long idPosition;
     private String pName;
     private int payPerHour;
-    private LinkedList<Worker> workers;
 
-    public JobPosition(int idPosition, String pName, int payPerHour) {
+    public JobPosition(long idPosition, String pName, int payPerHour) {
         this.idPosition = idPosition;
         this.pName = pName;
         this.payPerHour = payPerHour;
     }
 
-    public int getIdPosition() {
+    public JobPosition(String pName, int payPerHour) {
+        this.pName = pName;
+        this.payPerHour = payPerHour;
+    }
+
+    public JobPosition() {
+    }
+
+    public long getIdPosition() {
         return idPosition;
     }
 
-    public void setIdPosition(int idPosition) {
+    public void setIdPosition(long idPosition) {
         this.idPosition = idPosition;
     }
 

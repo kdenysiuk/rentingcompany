@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "Users")
-public class RentalComany {
+public class RentalCompany {
     @XmlElement
     public List<User> users = new ArrayList<>();
 }

@@ -3,6 +3,7 @@ package com.solvd.rentalcompany.dao.mysql;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.License;
 import com.solvd.rentalcompany.dao.DAO;
+import com.solvd.rentalcompany.entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +24,7 @@ public class MySQLicenseDAO implements DAO<License> {
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            resultSet.next();
             int idLicense = resultSet.getInt("id_licence");
             String num = resultSet.getString("num");
             int expirationDate = resultSet.getInt("expiration_date");
@@ -74,7 +76,7 @@ public class MySQLicenseDAO implements DAO<License> {
     }
 
     @Override
-    public void update(License license, int id) {
+    public void update(License license, long id) {
         String query = "UPDATE licence  SET num = ?, expiration_date = ? WHERE id_licence = ?";
 
         try {
@@ -105,5 +107,21 @@ public class MySQLicenseDAO implements DAO<License> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public License getFromUser (long id) throws SQLException {
+        String query = "SELECT * FROM user JOIN licence on licence.id_licence = user.id_user WHERE user.id_user = ?";
+        Connection connection = Connectionn.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        System.out.println(id);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        long idLicense = resultSet.getLong("id_licence");
+        String num = resultSet.getString("num");
+        int expirationDate = resultSet.getInt("expiration_date");
+
+        return new License(idLicense, num, expirationDate);
     }
 }

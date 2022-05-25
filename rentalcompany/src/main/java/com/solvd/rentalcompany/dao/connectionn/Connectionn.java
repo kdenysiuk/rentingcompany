@@ -1,6 +1,6 @@
 package com.solvd.rentalcompany.dao.connectionn;
 
-import com.solvd.rentalcompany.runner.Runner;
+import com.solvd.rentalcompany.runner.DAORunner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,14 +12,14 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Connectionn {
-    private static final Logger LOGGER = LogManager.getLogger(Runner.class);
+    private static final Logger LOGGER = LogManager.getLogger(DAORunner.class);
 
     // =========================================
     private static final Properties props = new Properties();
 
     static {
         try {
-            FileReader reader = new FileReader("rentalcompany/src/main/resources/database.properties");
+            FileReader reader = new FileReader("src/main/resources/database.properties");
             props.load(reader);
         } catch (IOException e) {
             LOGGER.debug(e.getMessage());
@@ -51,7 +51,7 @@ public class Connectionn {
 
         conn = DriverManager.getConnection(url, connectionProps);
 
-        System.out.println("Connected to database");
+        System.out.println("loading...");
         return conn;
     }
 

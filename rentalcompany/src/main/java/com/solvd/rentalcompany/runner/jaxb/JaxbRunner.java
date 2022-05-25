@@ -1,15 +1,20 @@
-package com.solvd.rentalcompany.runner;
+package com.solvd.rentalcompany.runner.jaxb;
 
 import com.solvd.rentalcompany.entity.License;
-import com.solvd.rentalcompany.entity.RentalComany;
+import com.solvd.rentalcompany.entity.RentalCompany;
 import com.solvd.rentalcompany.entity.User;
+
+import com.solvd.rentalcompany.runner.DAORunner;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
 public class JaxbRunner {
+    private static final Logger LOGGER = LogManager.getLogger(DAORunner.class);
 
     public static void main(String[] arg) throws JAXBException {
         License sergeyLicense = new License("34755644", 2025);
@@ -21,16 +26,16 @@ public class JaxbRunner {
         miguel.setIdUser(62);
         miguelLicense.setIdLicense(62);
 
-        RentalComany users = new RentalComany();
+        RentalCompany users = new RentalCompany();
 
         users.users.add(sergey);
         users.users.add(miguel);
 
-        JAXBContext ctx = JAXBContext.newInstance(RentalComany.class);
+        JAXBContext ctx = JAXBContext.newInstance(RentalCompany.class);
         Marshaller ms = ctx.createMarshaller();
         ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        ms.marshal(users, new File("rentalcompany/src/main/usersJaxb.xml"));
-        System.out.println("Finish");
+        ms.marshal(users, new File("src/main/usersJaxbOut.xml"));
+        LOGGER.info("Finish");
 
     }
 

@@ -1,5 +1,8 @@
-package com.solvd.rentalcompany.runner;
+package com.solvd.rentalcompany.runner.dom;
 
+import com.solvd.rentalcompany.runner.DAORunner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -12,11 +15,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 public class DomRunner {
+    private static final Logger LOGGER = LogManager.getLogger(DAORunner.class);
     public static void main (String[] args) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse("rentalcompany/src/main/resources/users.xml");
+            Document document = builder.parse("src/main/resources/users.xml");
             NodeList userList = document.getElementsByTagName("user");
             for (int i = 0; i < userList.getLength(); i++) {
                 Node user = userList.item(i);
@@ -30,7 +34,8 @@ public class DomRunner {
                             Element u_nameE = (Element) userNode;
                             System.out.println("User " + user_id + ": " + u_nameE.getTagName() + " = " + u_nameE.getTextContent());
                         } else if (userNode.getNodeType() == Node.ELEMENT_NODE && userNode.getNodeName().equals("license")) {
-                            System.out.println("bla bla");
+                            Element u_nameE = (Element) userNode;
+                            System.out.println("User " + user_id + ": " + u_nameE.getTagName() + " = " + u_nameE.getTextContent());
                         }
                     }
                 }
