@@ -4,3 +4,6 @@ Draft
 .idea
 target
 test
+logs
+usersJaxbOut.xml
+usersJsonOut.json
