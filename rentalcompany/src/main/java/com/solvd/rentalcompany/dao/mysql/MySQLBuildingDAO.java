@@ -59,7 +59,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
                 String address = resultSet.getString("address");
 
                 //location data
-                location.setIdLocation(resultSet.getInt("location_id_location"));
+                location.setIdLocation(resultSet.getLong("location_id_location"));
 
                 building = new Building(idBuilding, bName, address, location);
                 buildings.add(building);
@@ -81,7 +81,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
 
             preparedStatement.setString(1, building.getbName());
             preparedStatement.setString(2, building.getAddress());
-            preparedStatement.setInt(3, building.getLocation().getIdLocation());
+            preparedStatement.setLong(3, building.getLocation().getIdLocation());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -99,7 +99,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
 
             preparedStatement.setString(1, building.getbName());
             preparedStatement.setString(2, building.getAddress());
-            preparedStatement.setInt(3, building.getLocation().getIdLocation());
+            preparedStatement.setLong(3, building.getLocation().getIdLocation());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

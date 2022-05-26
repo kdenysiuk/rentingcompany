@@ -1,7 +1,5 @@
 package com.solvd.rentalcompany.entity;
 
-import java.util.LinkedList;
-
 public class JobPosition {
     private long idPosition;
     private String pName;

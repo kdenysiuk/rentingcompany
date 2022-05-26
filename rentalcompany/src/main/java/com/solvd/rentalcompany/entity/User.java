@@ -1,17 +1,31 @@
 package com.solvd.rentalcompany.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
+import java.util.ArrayList;
+import java.util.List;
 
-@XmlType(propOrder = {"idUser", "uName", "telephone", "email", "license"})
+
+@XmlRootElement(name = "UserList")
+@XmlType(propOrder = {"user", "idUser", "uName", "telephone", "email", "license"})
+@JsonPropertyOrder({"idUser", "uName", "telephone", "email", "license"})
 public class User {
     private long idUser;
+    @JsonProperty("User Name")
     private String uName;
+    @JsonProperty
     private String telephone;
+    @JsonProperty
     private String email;
+    @JsonProperty
     private License license;
+
+    public List<User> user = new ArrayList<>();
 
     public User(long idUser, String uName, String telephone, String email, License license) {
         this.idUser = idUser;

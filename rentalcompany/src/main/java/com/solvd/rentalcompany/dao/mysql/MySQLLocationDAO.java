@@ -2,7 +2,7 @@ package com.solvd.rentalcompany.dao.mysql;
 
 import com.solvd.rentalcompany.dao.DAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
-import com.solvd.rentalcompany.entity.JobPosition;
+import com.solvd.rentalcompany.entity.Location;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLJobPositionDAO implements DAO<JobPosition> {
+public class MySQLLocationDAO implements DAO<Location> {
 
     @Override
-    public JobPosition get(long id) {
-        String query = "SELECT * FROM job_position WHERE id_position = ?";
+    public Location get(long id) {
+        String query = "SELECT * FROM location WHERE id_location = ?";
 
         try {
             Connection connection = Connectionn.getConnection();
@@ -24,11 +24,10 @@ public class MySQLJobPositionDAO implements DAO<JobPosition> {
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
 
-            long idPosition = resultSet.getLong("id_position");
-            String pName = resultSet.getString("name_of_position");
-            int payPerHour = resultSet.getInt("pay_per_hour");
+            long idLocation = resultSet.getLong("id_location");
+            String city = resultSet.getString("city");
 
-            return new JobPosition(idPosition, pName , payPerHour);
+            return new Location(idLocation, city);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -36,10 +35,10 @@ public class MySQLJobPositionDAO implements DAO<JobPosition> {
     }
 
     @Override
-    public List<JobPosition> getAll() {
-        String query = "SELECT * FROM job_position";
-        List<JobPosition> jobPositions = new ArrayList<>();
-        JobPosition jobPosition;
+    public List<Location> getAll() {
+        String query = "SELECT * FROM location";
+        List<Location> locations = new ArrayList<>();
+        Location location;
 
         try {
             Connection connection = Connectionn.getConnection();
@@ -47,28 +46,26 @@ public class MySQLJobPositionDAO implements DAO<JobPosition> {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
-                long idPosition = resultSet.getLong("id_position");
-                String pName = resultSet.getString("name_of_position");
-                int payPerHour = resultSet.getInt("pay_per_hour");
+                long idLocation = resultSet.getLong("id_location");
+                String city = resultSet.getString("city");
 
-                jobPosition = new JobPosition(idPosition, pName , payPerHour);
-                jobPositions.add(jobPosition);
+                location = new Location(idLocation, city);
+                locations.add(location);
             }
-            return jobPositions;
+            return locations;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void insert(JobPosition jobPosition) {
-        String query = "INSERT into job_position (name_of_position, pay_per_hour) VALUES (?, ?)";
+    public void insert(Location location) {
+        String query = "INSERT into location (city) VALUES (?)";
 
         try {
             Connection connection = Connectionn.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, jobPosition.getpName());
-            preparedStatement.setInt(2, jobPosition.getPayPerHour());
+            preparedStatement.setString(1, location.getCity());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -77,16 +74,15 @@ public class MySQLJobPositionDAO implements DAO<JobPosition> {
     }
 
     @Override
-    public void update(JobPosition jobPosition, long id) {
-        String query = "UPDATE job_position SET name_of_position = ?, pay_per_hour = ? WHERE id_position = ?";
+    public void update(Location location, long id) {
+        String query = "UPDATE location SET city = ? WHERE id_location = ?";
 
         try {
             Connection connection = Connectionn.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setLong(3, id);
+            preparedStatement.setLong(2, id);
 
-            preparedStatement.setString(1, jobPosition.getpName());
-            preparedStatement.setInt(2, jobPosition.getPayPerHour());
+            preparedStatement.setString(1, location.getCity());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -95,13 +91,13 @@ public class MySQLJobPositionDAO implements DAO<JobPosition> {
     }
 
     @Override
-    public void delete(JobPosition jobPosition) {
-        String query = "DELETE FROM job_position WHERE id_position = ?";
+    public void delete(Location location) {
+        String query = "DELETE FROM location WHERE id_location = ?";
 
         try {
             Connection connection = Connectionn.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setLong(1, jobPosition.getIdPosition());
+            preparedStatement.setLong(1, location.getIdLocation());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

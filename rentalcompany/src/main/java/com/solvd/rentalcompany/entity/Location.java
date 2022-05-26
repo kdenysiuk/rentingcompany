@@ -3,24 +3,27 @@ package com.solvd.rentalcompany.entity;
 import java.util.LinkedList;
 
 public class Location {
-    private int idLocation;
+    private long idLocation;
     private String city;
     private LinkedList<Building> buildings;
 
-    public Location(int idLocation, String city) {
+    public Location(long idLocation, String city) {
         this.idLocation = idLocation;
         this.city = city;
     }
 
-    public Location() {
-        
+    public Location(String city) {
+        this.city = city;
     }
 
-    public int getIdLocation() {
+    public Location() {
+    }
+
+    public long getIdLocation() {
         return idLocation;
     }
 
-    public void setIdLocation(int idLocation) {
+    public void setIdLocation(long idLocation) {
         this.idLocation = idLocation;
     }
 

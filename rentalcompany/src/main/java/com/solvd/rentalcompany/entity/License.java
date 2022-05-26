@@ -1,13 +1,19 @@
 package com.solvd.rentalcompany.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 @XmlType(propOrder = {"idLicense", "num", "expirationDate"})
+@JsonPropertyOrder({"idLicense", "num", "expirationDate"})
 public class License {
+    @JsonProperty
     private long idLicense;
+    @JsonProperty("License Number")
     private String num;
+    @JsonProperty
     private int expirationDate;
 
     public License(String num, int expirationDate) {

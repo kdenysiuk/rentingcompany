@@ -1,7 +1,6 @@
 package com.solvd.rentalcompany.runner.jaxb;
 
 import com.solvd.rentalcompany.entity.License;
-import com.solvd.rentalcompany.entity.RentalCompany;
 import com.solvd.rentalcompany.entity.User;
 
 import com.solvd.rentalcompany.runner.DAORunner;
@@ -26,12 +25,12 @@ public class JaxbRunner {
         miguel.setIdUser(62);
         miguelLicense.setIdLicense(62);
 
-        RentalCompany users = new RentalCompany();
+        User users = new User();
 
-        users.users.add(sergey);
-        users.users.add(miguel);
+        users.user.add(sergey);
+        users.user.add(miguel);
 
-        JAXBContext ctx = JAXBContext.newInstance(RentalCompany.class);
+        JAXBContext ctx = JAXBContext.newInstance(User.class);
         Marshaller ms = ctx.createMarshaller();
         ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         ms.marshal(users, new File("src/main/usersJaxbOut.xml"));
