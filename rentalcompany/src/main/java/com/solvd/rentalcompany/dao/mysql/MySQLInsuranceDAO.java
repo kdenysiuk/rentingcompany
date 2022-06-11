@@ -112,4 +112,20 @@ public class MySQLInsuranceDAO implements DAO<Insurance> {
         }
 
     }
+
+    public Insurance getFromOrderId(long id) throws SQLException {
+        String query = "SELECT * FROM orders JOIN insurance on insurance.id_insurance = orders.insurance_id_insurance WHERE orders.id_order = ?";
+        Connection connection = Connectionn.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        long idInsurance = resultSet.getLong("id_insurance");
+        String iName = resultSet.getString("i_name");
+        int price = resultSet.getInt("price");
+        String insuranceType = resultSet.getString("insurance_type");
+
+        return new Insurance(idInsurance, iName, price, insuranceType);
+    }
 }

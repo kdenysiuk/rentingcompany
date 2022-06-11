@@ -26,7 +26,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //building data
-            int idBuilding = resultSet.getInt("id_building");
+            long idBuilding = resultSet.getLong("id_building");
             String bName = resultSet.getString("b_name");
             String address = resultSet.getString("address");
 
@@ -54,7 +54,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
 
             while(resultSet.next()) {
                 //building data
-                int idBuilding = resultSet.getInt("id_building");
+                long idBuilding = resultSet.getLong("id_building");
                 String bName = resultSet.getString("b_name");
                 String address = resultSet.getString("address");
 
@@ -119,5 +119,20 @@ public class MySQLBuildingDAO implements DAO<Building>{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Building getFromOrderId(long id) throws SQLException {
+        String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker JOIN building ON building.id_building = worker.building_id_building WHERE orders.id_order = ?";
+        Connection connection = Connectionn.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        long idBuilding = resultSet.getLong("id_building");
+        String bName = resultSet.getString("b_name");
+        String address = resultSet.getString("address");
+
+        return new Building(idBuilding, bName, address);
     }
 }

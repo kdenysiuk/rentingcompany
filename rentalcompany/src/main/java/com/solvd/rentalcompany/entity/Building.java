@@ -3,24 +3,39 @@ package com.solvd.rentalcompany.entity;
 import java.util.ArrayList;
 
 public class Building {
-    private int idBuilding;
+    private long idBuilding;
     private String bName;
     private String address;
     private Location location;
     private ArrayList<Worker> workers;
 
-    public Building(int idBuilding, String bName, String address, Location location) {
+    public Building(long idBuilding, String bName, String address, Location location) {
         this.idBuilding = idBuilding;
         this.bName = bName;
         this.address = address;
         this.location = location;
     }
 
-    public int getIdBuilding() {
+    public Building(String bName, String address, Location location) {
+        this.bName = bName;
+        this.address = address;
+        this.location = location;
+    }
+
+    public Building(long idBuilding, String bName, String address) {
+        this.idBuilding = idBuilding;
+        this.bName = bName;
+        this.address = address;
+    }
+
+    public Building() {
+    }
+
+    public long getIdBuilding() {
         return idBuilding;
     }
 
-    public void setIdBuilding(int idBuilding) {
+    public void setIdBuilding(long idBuilding) {
         this.idBuilding = idBuilding;
     }
 
@@ -46,5 +61,16 @@ public class Building {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "idBuilding=" + idBuilding +
+                ", bName='" + bName + '\'' +
+                ", address='" + address + '\'' +
+                ", location=" + location +
+                ", workers=" + workers +
+                '}';
     }
 }

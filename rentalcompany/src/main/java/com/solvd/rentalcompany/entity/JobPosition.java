@@ -42,4 +42,13 @@ public class JobPosition {
     public void setPayPerHour(int payPerHour) {
         this.payPerHour = payPerHour;
     }
+
+    @Override
+    public String toString() {
+        return "JobPosition{" +
+                "idPosition=" + idPosition +
+                ", pName='" + pName + '\'' +
+                ", payPerHour=" + payPerHour +
+                '}';
+    }
 }

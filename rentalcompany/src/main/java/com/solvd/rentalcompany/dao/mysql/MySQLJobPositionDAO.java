@@ -108,4 +108,19 @@ public class MySQLJobPositionDAO implements DAO<JobPosition> {
         }
 
     }
+
+    public JobPosition getFromOrderId(long id) throws SQLException {
+        String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker JOIN job_position on job_position.id_position = worker.position_idposition WHERE orders.id_order = ?";
+        Connection connection = Connectionn.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        long idPosition = resultSet.getLong("id_position");
+        String pName = resultSet.getString("name_of_position");
+        int payPerHour = resultSet.getInt("pay_per_hour");
+
+        return new JobPosition(idPosition, pName, payPerHour);
+    }
 }

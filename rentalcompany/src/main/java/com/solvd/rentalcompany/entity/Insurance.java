@@ -53,4 +53,14 @@ public class Insurance {
     public void setInsuranceType(String insuranceType) {
         this.insuranceType = insuranceType;
     }
+
+    @Override
+    public String toString() {
+        return "Insurance{" +
+                "idInsurance=" + idInsurance +
+                ", iName='" + iName + '\'' +
+                ", price=" + price +
+                ", insuranceType='" + insuranceType + '\'' +
+                '}';
+    }
 }

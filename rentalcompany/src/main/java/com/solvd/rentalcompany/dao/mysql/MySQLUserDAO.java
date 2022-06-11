@@ -123,4 +123,20 @@ public class MySQLUserDAO implements DAO<User> {
             throw new RuntimeException(e);
         }
     }
+
+    public User getFromOrderId (long id) throws SQLException {
+        String query = "SELECT * FROM orders JOIN user on user.id_user = orders.user_id_user WHERE orders.id_order = ?";
+        Connection connection = Connectionn.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        long idUser = resultSet.getLong("id_user");
+        String uName = resultSet.getString("u_name");
+        String telephone = resultSet.getString("telephone");
+        String email = resultSet.getString("email");
+
+        return new User(idUser, uName, telephone, email);
+    }
 }

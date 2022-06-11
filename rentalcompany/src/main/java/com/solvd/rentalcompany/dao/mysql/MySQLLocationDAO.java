@@ -104,4 +104,18 @@ public class MySQLLocationDAO implements DAO<Location> {
         }
 
     }
+
+    public Location getFromOrderId(long id) throws SQLException {
+        String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker JOIN building ON building.id_building = worker.building_id_building JOIN location ON location.id_location = building.location_id_location WHERE orders.id_order = ?";
+        Connection connection = Connectionn.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        long idLocation = resultSet.getLong("id_location");
+        String city = resultSet.getString("city");
+
+        return new Location(idLocation, city);
+    }
 }

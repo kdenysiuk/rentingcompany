@@ -20,7 +20,8 @@ public class UserService {
         List<User> users;
         users = mySQLUserDAO.getAll();
         for (User user : users) {
-            setForeignObject(user);
+            System.out.println(user.getIdUser() + "/" + users.size());
+            populateUser(user);
             }
         return users;
     }
@@ -40,9 +41,9 @@ public class UserService {
         this.mySQLicenseDAO.delete(user.getLicense());
     }
 
-    public void setForeignObject(User user) {
+    public void populateUser(User user) {
         try {
-            License license = mySQLicenseDAO.getFromUser(user.getIdUser());
+            License license = mySQLicenseDAO.getFromUserId(user.getIdUser());
             user.setLicense(license);
         } catch (SQLException e) {
             throw new RuntimeException(e);

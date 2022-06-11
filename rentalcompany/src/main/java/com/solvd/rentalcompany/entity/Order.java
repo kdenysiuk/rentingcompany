@@ -3,12 +3,27 @@ package com.solvd.rentalcompany.entity;
 import java.util.ArrayList;
 
 public class Order {
-    private int idOrder;
+    private long idOrder;
     private String orderDate;
     private User user;
     private Insurance insurance;
     private Worker worker;
     private ArrayList<Vehicle> vehicles;
+
+    public Order(long idOrder, String orderDate, User user, Insurance insurance, Worker worker) {
+        this.idOrder = idOrder;
+        this.orderDate = orderDate;
+        this.user = user;
+        this.insurance = insurance;
+        this.worker = worker;
+    }
+
+    public Order(String orderDate, User user, Insurance insurance, Worker worker) {
+        this.orderDate = orderDate;
+        this.user = user;
+        this.insurance = insurance;
+        this.worker = worker;
+    }
 
     public Order() {
     }
@@ -21,19 +36,13 @@ public class Order {
         this.vehicles = vehicles;
     }
 
-    public Order(int idOrder, String orderDate, User user, Insurance insurance, Worker worker) {
-        this.idOrder = idOrder;
-        this.orderDate = orderDate;
-        this.user = user;
-        this.insurance = insurance;
-        this.worker = worker;
-    }
 
-    public int getIdOrder() {
+
+    public long getIdOrder() {
         return idOrder;
     }
 
-    public void setIdOrder(int idOrder) {
+    public void setIdOrder(long idOrder) {
         this.idOrder = idOrder;
     }
 
@@ -67,5 +76,16 @@ public class Order {
 
     public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "idOrder=" + idOrder +
+                ", orderDate='" + orderDate + '\'' +
+                ", user=" + user +
+                ", insurance=" + insurance +
+                ", worker=" + worker +
+                '}';
     }
 }

@@ -104,4 +104,18 @@ public class MySQLWorkShiftDAO implements DAO<WorkShift> {
         }
 
     }
+
+    public WorkShift getFromOrderId(long id) throws SQLException {
+        String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker JOIN work_shift on work_shift.id_work_shitf = worker.work_shift_id_work_shitf WHERE orders.id_order = ?";
+        Connection connection = Connectionn.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+
+        long idWorkShift = resultSet.getLong("id_work_shitf");
+        String timeRange = resultSet.getString("time_range");
+
+        return new WorkShift(idWorkShift, timeRange);
+    }
 }

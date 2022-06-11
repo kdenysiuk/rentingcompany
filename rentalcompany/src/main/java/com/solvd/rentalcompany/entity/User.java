@@ -36,7 +36,6 @@ public class User {
     }
 
     public User() {
-
     }
 
     public User(String uName, String telephone, String email, License license) {
@@ -44,6 +43,13 @@ public class User {
         this.telephone = telephone;
         this.email = email;
         this.license = license;
+    }
+
+    public User(long idUser, String uName, String telephone, String email) {
+        this.idUser = idUser;
+        this.uName = uName;
+        this.telephone = telephone;
+        this.email = email;
     }
 
     public long getIdUser() {

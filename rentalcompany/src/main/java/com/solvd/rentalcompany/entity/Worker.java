@@ -1,7 +1,7 @@
 package com.solvd.rentalcompany.entity;
 
 public class Worker {
-    private int idWorker;
+    private long idWorker;
     private String wName;
     private String telephone;
     private String email;
@@ -9,7 +9,7 @@ public class Worker {
     private JobPosition jobPosition;
     private WorkShift workShift;
 
-    public Worker(int idWorker, String wName, String telephone, String email, Building building, JobPosition jobPosition, WorkShift workShift) {
+    public Worker(long idWorker, String wName, String telephone, String email, Building building, JobPosition jobPosition, WorkShift workShift) {
         this.idWorker = idWorker;
         this.wName = wName;
         this.telephone = telephone;
@@ -19,15 +19,30 @@ public class Worker {
         this.workShift = workShift;
     }
 
-    public Worker() {
-
+    public Worker(String wName, String telephone, String email, Building building, JobPosition jobPosition, WorkShift workShift) {
+        this.wName = wName;
+        this.telephone = telephone;
+        this.email = email;
+        this.building = building;
+        this.jobPosition = jobPosition;
+        this.workShift = workShift;
     }
 
-    public int getIdWorker() {
+    public Worker() {
+    }
+
+    public Worker(long idWorker, String wName, String telephone, String email) {
+        this.idWorker = idWorker;
+        this.wName = wName;
+        this.telephone = telephone;
+        this.email = email;
+    }
+
+    public long getIdWorker() {
         return idWorker;
     }
 
-    public void setIdWorker(int idWorker) {
+    public void setIdWorker(long idWorker) {
         this.idWorker = idWorker;
     }
 
@@ -77,5 +92,18 @@ public class Worker {
 
     public void setWorkShift(WorkShift workShift) {
         this.workShift = workShift;
+    }
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "idWorker=" + idWorker +
+                ", wName='" + wName + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", email='" + email + '\'' +
+                ", building=" + building +
+                ", jobPosition=" + jobPosition +
+                ", workShift=" + workShift +
+                '}';
     }
 }

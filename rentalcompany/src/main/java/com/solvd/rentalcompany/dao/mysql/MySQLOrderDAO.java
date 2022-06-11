@@ -18,7 +18,7 @@ public class MySQLOrderDAO implements DAO<Order> {
 
     @Override
     public Order get(long id) {
-        String query = "SELECT * FROM orders WHERE order_id = ?";
+        String query = "SELECT * FROM orders WHERE id_order = ?";
         User user = new User();
         Insurance insurance = new Insurance();
         Worker worker = new Worker();
@@ -28,19 +28,20 @@ public class MySQLOrderDAO implements DAO<Order> {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
 
             //order data
-            int idOrder = resultSet.getInt("id_user");
+            long idOrder = resultSet.getLong("id_order");
             String orderDate = resultSet.getString("order_date");
 
             //user data
-            user.setIdUser(resultSet.getInt("user_id_user"));
+            user.setIdUser(resultSet.getLong("user_id_user"));
 
             //insurance data
-            insurance.setIdInsurance(resultSet.getInt("insurance_id_insurance"));
+            insurance.setIdInsurance(resultSet.getLong("insurance_id_insurance"));
 
             //worker data
-            worker.setIdWorker(resultSet.getInt("worker_id_worker"));
+            worker.setIdWorker(resultSet.getLong("worker_id_worker"));
 
             return new Order(idOrder, orderDate, user, insurance, worker);
 
@@ -53,7 +54,7 @@ public class MySQLOrderDAO implements DAO<Order> {
     public List<Order> getAll() {
         String query = "SELECT * FROM orders";
         List<Order> orders = new ArrayList<>();
-        Order order = new Order();
+        Order order;
         User user = new User();
         Insurance insurance = new Insurance();
         Worker worker = new Worker();
@@ -65,7 +66,7 @@ public class MySQLOrderDAO implements DAO<Order> {
 
             while(resultSet.next()) {
                 //order data
-                int idOrder = resultSet.getInt("id_user");
+                long idOrder = resultSet.getLong("id_order");
                 String orderDate = resultSet.getString("order_date");
 
                 //user data
@@ -97,7 +98,7 @@ public class MySQLOrderDAO implements DAO<Order> {
             preparedStatement.setString(1, order.getOrderDate());
             preparedStatement.setLong(2, order.getUser().getIdUser());
             preparedStatement.setLong(3, order.getInsurance().getIdInsurance());
-            preparedStatement.setInt(4, order.getWorker().getIdWorker());
+            preparedStatement.setLong(4, order.getWorker().getIdWorker());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -116,7 +117,7 @@ public class MySQLOrderDAO implements DAO<Order> {
             preparedStatement.setString(1, order.getOrderDate());
             preparedStatement.setLong(2, order.getUser().getIdUser());
             preparedStatement.setLong(3, order.getInsurance().getIdInsurance());
-            preparedStatement.setInt(4, order.getWorker().getIdWorker());
+            preparedStatement.setLong(4, order.getWorker().getIdWorker());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -125,12 +126,12 @@ public class MySQLOrderDAO implements DAO<Order> {
 
     @Override
     public void delete(Order order) {
-        String query = "DELETE From user WhERE id = ?";
+        String query = "DELETE From orders WHERE id_order = ?";
 
         try {
             Connection connection = Connectionn.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, order.getIdOrder());
+            preparedStatement.setLong(1, order.getIdOrder());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

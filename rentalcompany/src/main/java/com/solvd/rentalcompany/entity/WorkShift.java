@@ -31,4 +31,12 @@ public class WorkShift {
     public void setTimeRange(String timeRange) {
         this.timeRange = timeRange;
     }
+
+    @Override
+    public String toString() {
+        return "WorkShift{" +
+                "idWorkShift=" + idWorkShift +
+                ", timeRange='" + timeRange + '\'' +
+                '}';
+    }
 }
