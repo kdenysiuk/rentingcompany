@@ -1,7 +1,6 @@
 package com.solvd.rentalcompany.designpattern;
 
 import com.solvd.rentalcompany.dao.*;
-import com.solvd.rentalcompany.SQLSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 

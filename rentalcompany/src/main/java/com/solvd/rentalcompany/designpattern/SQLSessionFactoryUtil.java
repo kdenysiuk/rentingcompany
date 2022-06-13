@@ -1,4 +1,4 @@
-package com.solvd.rentalcompany;
+package com.solvd.rentalcompany.designpattern;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;

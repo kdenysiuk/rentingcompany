@@ -11,7 +11,7 @@ import jakarta.xml.bind.annotation.XmlType;
 public class License {
     @JsonProperty
     private long idLicense;
-    @JsonProperty("License Number")
+    @JsonProperty
     private String num;
     @JsonProperty
     private int expirationDate;
@@ -59,7 +59,7 @@ public class License {
     @Override
     public String toString() {
         return "License{" +
-                "num='" + num + '\'' +
+                "License Number='" + num + '\'' +
                 ", expirationDate=" + expirationDate +
                 '}';
     }

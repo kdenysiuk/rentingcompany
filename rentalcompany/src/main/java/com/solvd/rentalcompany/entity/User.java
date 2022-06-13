@@ -16,7 +16,7 @@ import java.util.List;
 @JsonPropertyOrder({"idUser", "uName", "telephone", "email", "license"})
 public class User {
     private long idUser;
-    @JsonProperty("User Name")
+    @JsonProperty
     private String uName;
     @JsonProperty
     private String telephone;
@@ -95,7 +95,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "uName='" + uName + '\'' +
+                "User Name='" + uName + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
                 ", license=" + license +
