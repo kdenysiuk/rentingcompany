@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.rentalcompany.dao.IInsuranceDAO">
+    <resultMap id="InsuranceResultMap" type="com.solvd.rentalcompany.entity.Insurance" autoMapping="false">
+        <result column="id_insurance" property="idInsurance" />
+        <result column="i_name" property="iName" />
+        <result column="price" property="price" />
+        <result column="insurance_type" property="insuranceType" />
+    </resultMap>
+    <select id="get" parameterType="Long" resultMap="InsuranceResultMap">
+        SELECT * FROM insurance WHERE id_insurance =#{id_insurance}
+    </select>
+    <select id="getAll" resultMap="InsuranceResultMap">
+        SELECT * FROM insurance
+    </select>
+    <insert id="insert">
+        INSERT into insurance (i_name, price, insurance_type)
+        VALUES (#{i_name}, #{price}, #{insurance_type})
+    </insert>
+    <update id="update">
+        UPDATE insurance SET
+        i_name =#{i_name},
+        price =#{price},
+        insurance_type =#{insurance_type}
+        WHERE id_insurance =#{id_insurance}
+    </update>
+    <delete id="delete">
+        DELETE From insurance WHERE id_insurance =#{id_insurance}
+    </delete>
+</mapper>

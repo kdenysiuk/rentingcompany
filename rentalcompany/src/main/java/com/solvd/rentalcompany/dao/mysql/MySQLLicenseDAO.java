@@ -1,8 +1,8 @@
 package com.solvd.rentalcompany.dao.mysql;
 
+import com.solvd.rentalcompany.dao.ILicenseDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.License;
-import com.solvd.rentalcompany.dao.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLicenseDAO implements DAO<License> {
+public class MySQLLicenseDAO implements ILicenseDAO{
 
     @Override
     public License get(long id) {
@@ -108,6 +108,7 @@ public class MySQLicenseDAO implements DAO<License> {
         }
     }
 
+    @Override
     public License getFromUserId(long id) throws SQLException {
         String query = "SELECT * FROM user JOIN licence on licence.id_licence = user.licence_id_licence WHERE user.id_user = ?";
         Connection connection = Connectionn.getConnection();
@@ -123,6 +124,7 @@ public class MySQLicenseDAO implements DAO<License> {
         return new License(idLicense, num, expirationDate);
     }
 
+    @Override
     public License getFromOrderId (long id) throws SQLException {
         String query = "SELECT * FROM orders JOIN user on user.id_user = orders.user_id_user JOIN licence ON licence.id_licence = user.licence_id_licence WHERE orders.id_order = ?";
         Connection connection = Connectionn.getConnection();

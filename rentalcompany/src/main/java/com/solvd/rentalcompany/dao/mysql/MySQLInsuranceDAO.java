@@ -1,6 +1,6 @@
 package com.solvd.rentalcompany.dao.mysql;
 
-import com.solvd.rentalcompany.dao.DAO;
+import com.solvd.rentalcompany.dao.IInsuranceDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.Insurance;
 
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLInsuranceDAO implements DAO<Insurance> {
+public class MySQLInsuranceDAO implements IInsuranceDAO {
 
     @Override
     public Insurance get(long id) {
@@ -113,6 +113,7 @@ public class MySQLInsuranceDAO implements DAO<Insurance> {
 
     }
 
+    @Override
     public Insurance getFromOrderId(long id) throws SQLException {
         String query = "SELECT * FROM orders JOIN insurance on insurance.id_insurance = orders.insurance_id_insurance WHERE orders.id_order = ?";
         Connection connection = Connectionn.getConnection();

@@ -1,8 +1,8 @@
 package com.solvd.rentalcompany.dao.mysql;
 
+import com.solvd.rentalcompany.dao.IBuildingDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.Building;
-import com.solvd.rentalcompany.dao.DAO;
 import com.solvd.rentalcompany.entity.Location;
 
 import java.sql.Connection;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLBuildingDAO implements DAO<Building>{
+public class MySQLBuildingDAO implements IBuildingDAO {
 
     @Override
     public Building get(long id) {
@@ -121,6 +121,7 @@ public class MySQLBuildingDAO implements DAO<Building>{
         }
     }
 
+    @Override
     public Building getFromOrderId(long id) throws SQLException {
         String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker JOIN building ON building.id_building = worker.building_id_building WHERE orders.id_order = ?";
         Connection connection = Connectionn.getConnection();

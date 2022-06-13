@@ -2,7 +2,7 @@ package com.solvd.rentalcompany.dao;
 
 import java.util.List;
 
-public interface DAO<T> {
+public interface IDAO<T> {
 
     T get(long id);
 

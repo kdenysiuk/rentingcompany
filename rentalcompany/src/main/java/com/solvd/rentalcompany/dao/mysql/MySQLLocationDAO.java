@@ -1,6 +1,6 @@
 package com.solvd.rentalcompany.dao.mysql;
 
-import com.solvd.rentalcompany.dao.DAO;
+import com.solvd.rentalcompany.dao.ILocationDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.Location;
 
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLLocationDAO implements DAO<Location> {
+public class MySQLLocationDAO implements ILocationDAO {
 
     @Override
     public Location get(long id) {
@@ -105,6 +105,7 @@ public class MySQLLocationDAO implements DAO<Location> {
 
     }
 
+    @Override
     public Location getFromOrderId(long id) throws SQLException {
         String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker JOIN building ON building.id_building = worker.building_id_building JOIN location ON location.id_location = building.location_id_location WHERE orders.id_order = ?";
         Connection connection = Connectionn.getConnection();

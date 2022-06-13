@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.rentalcompany.dao.ILicenseDAO">
+    <resultMap id="LicenseResultMap" type="com.solvd.rentalcompany.entity.License" autoMapping="false">
+        <result column="id_licence" property="idLicense" />
+        <result column="num" property="num" />
+        <result column="expiration_date" property="expirationDate" />
+    </resultMap>
+    <select id="get" parameterType="Long" resultMap="LicenseResultMap">
+        SELECT * From licence WHERE id_licence =#{id_licence}
+    </select>
+    <select id="getAll" resultMap="LicenseResultMap">
+        SELECT * FROM licence
+    </select>
+    <insert id="insert">
+        INSERT into licence (id_licence, num, expiration_date)
+        VALUES (#{id_licence}, #{num}, #{expiration_date})
+    </insert>
+    <update id="update">
+        UPDATE licence SET
+        id_licence =#{id_licence},
+        num =#{num},
+        expiration_date =#{expiration_date}
+        WHERE id_licence =#{id_licence}
+    </update>
+    <delete id="delete">
+        DELETE From licence WHERE id_licence =#{id_licence}
+    </delete>
+</mapper>

@@ -1,9 +1,9 @@
 package com.solvd.rentalcompany.dao.mysql;
 
+import com.solvd.rentalcompany.dao.IVehicleDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.Model;
 import com.solvd.rentalcompany.entity.Vehicle;
-import com.solvd.rentalcompany.dao.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLVehicleDAO implements DAO<Vehicle> {
+public class MySQLVehicleDAO implements IVehicleDAO {
     @Override
     public Vehicle get(long id) {
        String query = "SELECT * FROM vehicles WHERE vehicles_id = ?";

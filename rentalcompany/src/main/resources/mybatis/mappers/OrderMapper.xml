@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.rentalcompany.dao.IOrderDAO">
+    <resultMap id="OrderResultMap" type="com.solvd.rentalcompany.entity.Order" autoMapping="false">
+        <result column="id_order" property="idOrder" />
+        <result column="order_date" property="orderDate" />
+        <association property="user" column="user_id_user" javaType="com.solvd.rentalcompany.entity.User" select="com.solvd.rentalcompany.dao.IUserDAO.get"/>
+        <association property="insurance" column="insurance_id_insurance" javaType="com.solvd.rentalcompany.entity.Insurance" select="com.solvd.rentalcompany.dao.IInsuranceDAO.get"/>
+        <association property="worker" column="worker_id_worker" javaType="com.solvd.rentalcompany.entity.Worker" select="com.solvd.rentalcompany.dao.IWorkerDAO.get"/>
+    </resultMap>
+    <select id="get" parameterType="Long" resultMap="OrderResultMap">
+        SELECT * FROM orders WHERE id_order =#{id_order}
+    </select>
+    <select id="getAll" resultMap="OrderResultMap">
+        Select * from orders
+    </select>
+    <insert id="insert">
+        INSERT into orders (order_date, user_id_user, insurance_id_insurance, worker_id_worker)
+        VALUES (#{order_date}, #{user_id_user}, #{insurance_id_insurance}, #{worker_id_worker})
+    </insert>
+    <update id="update">
+        UPDATE orders SET
+        order_date =#{order_date},
+        user_id_user =#{user_id_user},
+        insurance_id_insurance =#{insurance_id_insurance},
+        worker_id_worker =#{worker_id_worker}
+        WHERE id_order =#{id_order}
+    </update>
+    <delete id="delete">
+        DELETE From orders WHERE id_order =#{id_order}
+    </delete>
+</mapper>

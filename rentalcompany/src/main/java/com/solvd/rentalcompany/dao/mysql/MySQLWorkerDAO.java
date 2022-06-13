@@ -1,6 +1,6 @@
 package com.solvd.rentalcompany.dao.mysql;
 
-import com.solvd.rentalcompany.dao.DAO;
+import com.solvd.rentalcompany.dao.IWorkerDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.Building;
 import com.solvd.rentalcompany.entity.JobPosition;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLWorkerDAO implements DAO<Worker> {
+public class MySQLWorkerDAO implements IWorkerDAO {
     @Override
     public Worker get(long id) {
         String query = "SELECT * FROM worker WHERE id_worker = ?";
@@ -145,6 +145,7 @@ public class MySQLWorkerDAO implements DAO<Worker> {
         }
     }
 
+    @Override
     public Worker getFromOrderId(long id) throws SQLException {
         String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker WHERE orders.id_order = ?";
         Connection connection = Connectionn.getConnection();

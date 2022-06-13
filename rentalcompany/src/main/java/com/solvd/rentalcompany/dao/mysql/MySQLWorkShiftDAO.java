@@ -1,6 +1,6 @@
 package com.solvd.rentalcompany.dao.mysql;
 
-import com.solvd.rentalcompany.dao.DAO;
+import com.solvd.rentalcompany.dao.IWorkShiftDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.WorkShift;
 
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLWorkShiftDAO implements DAO<WorkShift> {
+public class MySQLWorkShiftDAO implements IWorkShiftDAO {
 
     @Override
     public WorkShift get(long id) {
@@ -105,6 +105,7 @@ public class MySQLWorkShiftDAO implements DAO<WorkShift> {
 
     }
 
+    @Override
     public WorkShift getFromOrderId(long id) throws SQLException {
         String query = "SELECT * FROM orders JOIN worker on worker.id_worker = orders.worker_id_worker JOIN work_shift on work_shift.id_work_shitf = worker.work_shift_id_work_shitf WHERE orders.id_order = ?";
         Connection connection = Connectionn.getConnection();

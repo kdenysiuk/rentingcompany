@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.rentalcompany.dao.IBuildingDAO">
+    <resultMap id="BuildingResultMap" type="com.solvd.rentalcompany.entity.Building" autoMapping="false">
+        <result column="id_building" property="idBuilding" />
+        <result column="b_name" property="bName" />
+        <result column="address" property="address" />
+        <association property="location" column="location_id_location" javaType="com.solvd.rentalcompany.entity.Location" select="com.solvd.rentalcompany.dao.ILocationDAO.get"/>
+    </resultMap>
+    <select id="get" parameterType="Long" resultMap="BuildingResultMap">
+        SELECT * FROM building WHERE id_building =#{id_building}
+    </select>
+    <select id="getAll" resultMap="BuildingResultMap">
+        SELECT * FROM building
+    </select>
+    <insert id="insert">
+        INSERT into building (b_name, address, location_id_location)
+        VALUES (#{b_name}, #{address}, #{location_id_location})
+    </insert>
+    <update id="update">
+        UPDATE building SET
+        b_name =#{b_name},
+        address =#{address},
+        location_id_location =#{location_id_location}
+        WHERE id_building =#{id_building}
+    </update>
+    <delete id="delete">
+        DELETE From building WHERE id_building =#{id_building}
+    </delete>
+</mapper>

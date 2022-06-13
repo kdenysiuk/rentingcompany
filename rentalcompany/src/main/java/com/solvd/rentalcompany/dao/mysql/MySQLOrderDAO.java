@@ -1,9 +1,9 @@
 package com.solvd.rentalcompany.dao.mysql;
 
+import com.solvd.rentalcompany.dao.IOrderDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.Insurance;
 import com.solvd.rentalcompany.entity.Order;
-import com.solvd.rentalcompany.dao.DAO;
 import com.solvd.rentalcompany.entity.User;
 import com.solvd.rentalcompany.entity.Worker;
 
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLOrderDAO implements DAO<Order> {
+public class MySQLOrderDAO implements IOrderDAO {
 
     @Override
     public Order get(long id) {

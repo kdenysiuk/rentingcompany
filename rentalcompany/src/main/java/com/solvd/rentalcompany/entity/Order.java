@@ -36,8 +36,6 @@ public class Order {
         this.vehicles = vehicles;
     }
 
-
-
     public long getIdOrder() {
         return idOrder;
     }

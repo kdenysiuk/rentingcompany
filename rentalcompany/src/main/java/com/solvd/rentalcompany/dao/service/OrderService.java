@@ -9,7 +9,7 @@ import java.util.List;
 public class OrderService {
     private final MySQLOrderDAO mySQLOrderDAO = new MySQLOrderDAO();
     private final MySQLUserDAO mySQLUserDAO = new MySQLUserDAO();
-    private final MySQLicenseDAO mySQLicenseDAO = new MySQLicenseDAO();
+    private final MySQLLicenseDAO mySQLLicenseDAO = new MySQLLicenseDAO();
     private final MySQLWorkerDAO mySQLWorkerDAO = new MySQLWorkerDAO();
     private final MySQLInsuranceDAO mySQLInsuranceDAO = new MySQLInsuranceDAO();
     private final MySQLJobPositionDAO mySQLJobPositionDAO = new MySQLJobPositionDAO();
@@ -47,7 +47,7 @@ public class OrderService {
     public void populateOrder(Order order) {
         try {
             User user = mySQLUserDAO.getFromOrderId(order.getIdOrder());
-            License license = mySQLicenseDAO.getFromOrderId(order.getIdOrder());
+            License license = mySQLLicenseDAO.getFromOrderId(order.getIdOrder());
             Worker worker = mySQLWorkerDAO.getFromOrderId(order.getIdOrder());
             Building building = mySQLBuildingDAO.getFromOrderId(order.getIdOrder());
             Location location = mySQLLocationDAO.getFromOrderId(order.getIdOrder());

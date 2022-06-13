@@ -1,9 +1,9 @@
 package com.solvd.rentalcompany.dao.mysql;
 
+import com.solvd.rentalcompany.dao.IUserDAO;
 import com.solvd.rentalcompany.dao.connectionn.Connectionn;
 import com.solvd.rentalcompany.entity.License;
 import com.solvd.rentalcompany.entity.User;
-import com.solvd.rentalcompany.dao.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLUserDAO implements DAO<User> {
+public class MySQLUserDAO implements IUserDAO {
 
     @Override
     public User get(long id) {
@@ -124,6 +124,7 @@ public class MySQLUserDAO implements DAO<User> {
         }
     }
 
+    @Override
     public User getFromOrderId (long id) throws SQLException {
         String query = "SELECT * FROM orders JOIN user on user.id_user = orders.user_id_user WHERE orders.id_order = ?";
         Connection connection = Connectionn.getConnection();

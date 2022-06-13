@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.rentalcompany.dao.IJobPositionDAO">
+    <resultMap id="JobPositionResultMap" type="com.solvd.rentalcompany.entity.JobPosition" autoMapping="false">
+        <result column="id_position" property="idPosition" />
+        <result column="name_of_position" property="pName" />
+        <result column="pay_per_hour" property="payPerHour" />
+    </resultMap>
+    <select id="get" parameterType="Long" resultMap="JobPositionResultMap">
+        SELECT * FROM job_position WHERE id_position =#{id_position}
+    </select>
+    <select id="getAll" resultMap="JobPositionResultMap">
+        SELECT * FROM job_position
+    </select>
+    <insert id="insert">
+        INSERT into job_position (name_of_position, pay_per_hour)
+        VALUES (#{name_of_position}, #{pay_per_hour})
+    </insert>
+    <update id="update">
+        UPDATE job_position SET
+        name_of_position =#{name_of_position},
+        pay_per_hour =#{pay_per_hour}
+        WHERE id_location =#{id_location}
+    </update>
+    <delete id="delete">
+        DELETE From job_position WHERE job_position =#{job_position}
+    </delete>
+</mapper>
